@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista zamówień</title>
+</head>
+<body>
+    <h1>Lista zamówień</h1>
+    <ul>
+        {% for order in orders %}
+            <li>{{ order.dish.name }} - {{ order.created_at }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

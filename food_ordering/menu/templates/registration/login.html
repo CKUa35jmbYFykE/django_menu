@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Zaloguj się</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Ups!</strong> Wystąpiły następujące błędy:
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="inputUsername">Nazwa użytkownika</label>
+                <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Nazwa użytkownika" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Hasło</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Hasło" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Zaloguj się</button>
+        </form>
+    </div>
+</body>
+</html>

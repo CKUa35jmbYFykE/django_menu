@@ -1,0 +1,24 @@
+<!-- templates/order_confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Potwierdzenie zamówienia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Dziękujemy za zamówienie!</h1>
+    <a href="{% url 'dish_list' %}" class="btn btn-primary">Wróć do strony głównej</a>
+</div>
+</body>
+</html>
+{% if errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for field, error_list in errors.items %}
+            {% for error in error_list %}
+                {{ error }}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
